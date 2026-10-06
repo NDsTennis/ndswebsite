@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { BrandMark } from "@/components/ui/brand-mark";
 import type { Locale } from "@/content/types";
 
 interface NavLink {
@@ -58,7 +59,7 @@ export function MobileMenu({
             className="fixed inset-0 z-50 flex flex-col bg-cream"
           >
             <div className="flex items-center justify-between px-5 py-4">
-              <span className="font-display text-xl text-ink">NDS</span>
+              <BrandMark className="font-display text-xl text-ink" />
               <button
                 type="button"
                 onClick={() => setOpen(false)}

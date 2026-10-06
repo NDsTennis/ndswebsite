@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { sectionIds, siteConfig, socialLinks } from "@/content/site";
+import { BrandMark } from "@/components/ui/brand-mark";
 import type { Dictionary, Locale } from "@/content/types";
 
 export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
@@ -17,7 +18,7 @@ export function Footer({ dict, locale }: { dict: Dictionary; locale: Locale }) {
       <div className="mx-auto w-full max-w-6xl px-5 py-14 sm:px-8 lg:px-12">
         <div className="flex flex-col gap-10 sm:flex-row sm:justify-between">
           <div className="max-w-sm">
-            <span className="font-display text-2xl">{siteConfig.brand}</span>
+            <BrandMark className="font-display text-2xl" label={siteConfig.brand} />
             <p className="mt-3 text-sm text-cream/70">{dict.footer.tagline}</p>
             {socialLinks.instagram && (
               <a

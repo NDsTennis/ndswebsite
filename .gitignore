@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# supabase CLI local metadata
+/supabase/.temp/
+
 # local agent settings (per-machine, not shared)
 .claude/settings.local.json
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { MobileMenu } from "@/components/layout/mobile-menu";
+import { BrandMark } from "@/components/ui/brand-mark";
 import { sectionIds } from "@/content/site";
 import type { Dictionary, Locale } from "@/content/types";
 
@@ -23,7 +24,7 @@ export function Nav({ dict, locale }: { dict: Dictionary; locale: Locale }) {
       </a>
       <div className="mx-auto flex h-18 w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
         <Link href={`/${locale}`} className="font-display text-2xl tracking-tight text-ink">
-          NDS
+          <BrandMark />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label={dict.nav.skipToContent}>
