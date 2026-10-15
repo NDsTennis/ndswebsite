@@ -35,12 +35,11 @@ export async function submitReview(
     return { status: "unavailable" };
   }
 
-  const { error } = await supabase.from("reviews").insert({
-    display_name: parsed.data.displayName,
-    rating: parsed.data.rating,
-    message: parsed.data.message,
-    language: parsed.data.language,
-    source: "website",
+  const { error } = await supabase.rpc("submit_review", {
+    p_display_name: parsed.data.displayName,
+    p_rating: parsed.data.rating,
+    p_message: parsed.data.message,
+    p_language: parsed.data.language,
   });
 
   if (error) {
