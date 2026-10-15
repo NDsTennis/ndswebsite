@@ -36,12 +36,11 @@ export const sectionIds = {
 } as const;
 
 /**
- * Contact placeholders. Real values are not finalized — provide them via
- * environment variables. Defaults here are obviously fake so local dev and
- * previews never leak or imply real contact information.
+ * Contact configuration. The environment variable remains the deployment
+ * source of truth, while this public fallback keeps local previews useful.
  */
 export const contactConfig = {
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "info@example.com",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "andy.promatch@gmail.com",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "", // digits only, e.g. "491511234567"
 } as const;
 
