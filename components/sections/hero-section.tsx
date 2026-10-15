@@ -53,6 +53,7 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
         </div>
 
         <Photo
+          src="/images/nds/andy-portrait.jpg"
           alt={dict.hero.name}
           label={dict.hero.photoPlaceholderLabel}
           aspect="portrait"

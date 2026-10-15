@@ -120,6 +120,22 @@ export const en: Dictionary = {
     noPricingNote:
       "There is intentionally no fixed price list — every enquiry gets an individual offer.",
   },
+  gallery: {
+    eyebrow: "On court",
+    heading: "Tennis in motion",
+    intro:
+      "Training, competition and shared moments on court — a glimpse into Andy's work with players of all levels.",
+    items: [
+      { src: "/images/nds/andy-portrait.jpg", alt: "Andy Dumitrescu on a tennis court" },
+      { src: "/images/nds/trophy-event.jpg", alt: "Andy Dumitrescu at a tennis event" },
+      { src: "/images/nds/backhand-action.jpg", alt: "Tennis player hitting a backhand" },
+      { src: "/images/nds/forehand-action.jpg", alt: "Tennis player serving on clay" },
+      { src: "/images/nds/group-camp.jpg", alt: "Tennis camp with young players" },
+      { src: "/images/nds/junior-training.jpg", alt: "Junior tennis training on clay" },
+      { src: "/images/nds/junior-trophy.jpg", alt: "Young tennis player holding a trophy" },
+      { src: "/images/nds/team-indoor.jpg", alt: "Tennis team indoors" },
+    ],
+  },
   reviews: {
     eyebrow: "Reviews",
     heading: "What players say",

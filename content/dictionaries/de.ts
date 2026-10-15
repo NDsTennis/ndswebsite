@@ -120,6 +120,22 @@ export const de: Dictionary = {
     noPricingNote:
       "Es gibt bewusst keine festen Preislisten – jede Anfrage bekommt ein individuelles Angebot.",
   },
+  gallery: {
+    eyebrow: "Auf dem Platz",
+    heading: "Tennis in Bewegung",
+    intro:
+      "Training, Wettkampf und gemeinsame Momente auf dem Platz – ein Einblick in Andys Arbeit mit Spielerinnen und Spielern.",
+    items: [
+      { src: "/images/nds/andy-portrait.jpg", alt: "Andy Dumitrescu auf dem Tennisplatz" },
+      { src: "/images/nds/trophy-event.jpg", alt: "Andy Dumitrescu bei einem Tennisevent" },
+      { src: "/images/nds/backhand-action.jpg", alt: "Tennisspieler beim Rückhandschlag" },
+      { src: "/images/nds/forehand-action.jpg", alt: "Tennisspieler beim Aufschlag auf Sand" },
+      { src: "/images/nds/group-camp.jpg", alt: "Tenniscamp mit Kindern und Jugendlichen" },
+      { src: "/images/nds/junior-training.jpg", alt: "Kindertraining auf dem Tennisplatz" },
+      { src: "/images/nds/junior-trophy.jpg", alt: "Junger Tennisspieler mit Pokal" },
+      { src: "/images/nds/team-indoor.jpg", alt: "Tennisteam in der Halle" },
+    ],
+  },
   reviews: {
     eyebrow: "Bewertungen",
     heading: "Stimmen von Spielerinnen und Spielern",

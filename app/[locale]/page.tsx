@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { AboutSection } from "@/components/sections/about-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { HeroSection } from "@/components/sections/hero-section";
+import { GallerySection } from "@/components/sections/gallery-section";
 import { ReviewsSection } from "@/components/sections/reviews-section";
 import { TrainingSection } from "@/components/sections/training-section";
 import { getDictionary, hasLocale } from "@/lib/i18n/get-dictionary";
@@ -24,6 +25,7 @@ export default async function HomePage({ params }: Props) {
       <HeroSection dict={dict} />
       <AboutSection dict={dict} />
       <TrainingSection dict={dict} />
+      <GallerySection dict={dict} />
       <ReviewsSection dict={dict} />
       <ContactSection dict={dict} />
     </>

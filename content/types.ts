@@ -55,6 +55,13 @@ export interface TrainingDictionary {
   noPricingNote: string;
 }
 
+export interface GalleryDictionary {
+  eyebrow: string;
+  heading: string;
+  intro: string;
+  items: Array<{ src: string; alt: string }>;
+}
+
 export interface ReviewsDictionary {
   eyebrow: string;
   heading: string;
@@ -140,6 +147,7 @@ export interface Dictionary {
   hero: HeroDictionary;
   about: AboutDictionary;
   training: TrainingDictionary;
+  gallery: GalleryDictionary;
   reviews: ReviewsDictionary;
   contact: ContactDictionary;
   footer: FooterDictionary;

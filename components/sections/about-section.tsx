@@ -13,6 +13,7 @@ export function AboutSection({ dict }: { dict: Dictionary }) {
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-16">
           <Reveal className="lg:sticky lg:top-28">
             <Photo
+              src="/images/nds/trophy-event.jpg"
               alt={siteConfig.publicName}
               label={dict.about.photoPlaceholderLabel}
               aspect="portrait"
