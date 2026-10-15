@@ -35,7 +35,7 @@ Copy `.env.example` to `.env.local` and fill in real values as they become avail
 | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Enables the Reviews section and both forms. Safe to expose client-side; all access is governed by RLS (see below). |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | Email shown in the Contact section. |
 | `SUPABASE_SERVICE_ROLE_KEY` | Server-only key used by the protected admin panel. Never expose or commit it. |
-| `ADMIN_EMAIL` | Supabase Auth email allowed to use `/admin`. |
+| `ADMIN_EMAIL` | Supabase Auth email(s) allowed to use `/admin`, comma-separated for multiple admins. |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | Digits only (e.g. `491511234567`). The WhatsApp button is hidden entirely when unset. |
 | `NEXT_PUBLIC_INSTAGRAM_URL` | Optional footer link. |
 

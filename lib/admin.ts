@@ -6,8 +6,11 @@ export async function getAdminContext() {
   const authClient = await getSupabaseAuthServerClient();
   const { data } = authClient ? await authClient.auth.getUser() : { data: { user: null } };
   const user = data.user;
-  const configuredEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
-  const isAdmin = Boolean(user?.email && configuredEmail && user.email.toLowerCase() === configuredEmail);
+  const configuredEmails = (process.env.ADMIN_EMAIL ?? "")
+    .split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
+  const isAdmin = Boolean(user?.email && configuredEmails.includes(user.email.toLowerCase()));
 
   const adminClient = isAdmin ? getSupabaseAdminClient() : null;
   if (!user || !isAdmin || !adminClient) return { user, isAdmin, adminClient, mustChangePassword: false };
