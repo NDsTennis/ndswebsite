@@ -60,6 +60,8 @@ Das geschützte Admin-Panel ist unter `/admin` erreichbar. Es nutzt Supabase Aut
 
 Nach der Anmeldung kann der freigeschaltete Benutzer Bewertungen freigeben, ablehnen und löschen sowie eingegangene Anfragen ansehen und löschen. Andere angemeldete Supabase-Benutzer erhalten keinen Zugriff.
 
+Beim ersten Login wird der Benutzer automatisch zum Ändern des initialen Passworts gezwungen. Erst danach wird das Dashboard freigeschaltet.
+
 ## Content editing
 
 All copy and structural data lives in `content/`, not scattered through components:

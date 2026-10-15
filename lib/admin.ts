@@ -9,7 +9,21 @@ export async function getAdminContext() {
   const configuredEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
   const isAdmin = Boolean(user?.email && configuredEmail && user.email.toLowerCase() === configuredEmail);
 
-  return { user, isAdmin, adminClient: isAdmin ? getSupabaseAdminClient() : null };
+  const adminClient = isAdmin ? getSupabaseAdminClient() : null;
+  if (!user || !isAdmin || !adminClient) return { user, isAdmin, adminClient, mustChangePassword: false };
+
+  const { data: profile } = await adminClient
+    .from("admin_profiles")
+    .select("must_change_password")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (!profile) {
+    await adminClient.from("admin_profiles").insert({ user_id: user.id, must_change_password: true });
+    return { user, isAdmin, adminClient, mustChangePassword: true };
+  }
+
+  return { user, isAdmin, adminClient, mustChangePassword: profile.must_change_password };
 }
 
 export async function requireAdmin() {
@@ -17,5 +31,6 @@ export async function requireAdmin() {
   if (!context.user || !context.isAdmin || !context.adminClient) {
     throw new Error("Unauthorized");
   }
+  if (context.mustChangePassword) throw new Error("Password change required");
   return context.adminClient;
 }
