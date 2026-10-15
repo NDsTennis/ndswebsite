@@ -17,9 +17,10 @@ export interface InquiryRow {
   name: string;
   email: string;
   phone: string | null;
-  intent: string;
+  inquiry_type: string;
   message: string;
-  consent: boolean;
+  privacy_consent: boolean;
   language: string | null;
+  status: string;
   created_at: string;
 }

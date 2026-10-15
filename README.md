@@ -54,9 +54,11 @@ Both tables have RLS enabled from the start:
 - **`reviews`** — anyone can `insert` (forced to `status = 'pending'` by both a check constraint and the RLS policy) and `select` only `status = 'approved'` rows. There is no anon/authenticated `update`/`delete` policy.
 - **`inquiries`** — anyone can `insert`; there is no `select`/`update`/`delete` policy for anon/authenticated at all, since inquiries contain personal contact details.
 
-### Review moderation
+### Admin-Panel und Review moderation
 
-There is **no admin UI yet** — approving/rejecting a review means updating its `status` column directly (SQL editor, or the service-role key from a script), which bypasses RLS by design. Building a proper moderation tool is flagged as a follow-up for Codex.
+Das geschützte Admin-Panel ist unter `/admin` erreichbar. Es nutzt Supabase Auth mit E-Mail und Passwort. Lege den Admin-Benutzer im Supabase-Dashboard unter **Authentication → Users** an. In Vercel müssen zusätzlich `ADMIN_EMAIL` (exakt dieselbe E-Mail-Adresse) und der serverseitige `SUPABASE_SERVICE_ROLE_KEY` gesetzt werden. Der Service-Role-Key darf niemals mit `NEXT_PUBLIC_` beginnen und nicht im Browser landen.
+
+Nach der Anmeldung kann der freigeschaltete Benutzer Bewertungen freigeben, ablehnen und löschen sowie eingegangene Anfragen ansehen und löschen. Andere angemeldete Supabase-Benutzer erhalten keinen Zugriff.
 
 ## Content editing
 
