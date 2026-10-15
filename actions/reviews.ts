@@ -41,7 +41,6 @@ export async function submitReview(
     message: parsed.data.message,
     language: parsed.data.language,
     source: "website",
-    status: "pending",
   });
 
   if (error) {

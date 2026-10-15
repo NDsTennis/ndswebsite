@@ -39,15 +39,15 @@ Copy `.env.example` to `.env.local` and fill in real values as they become avail
 
 ## Supabase setup
 
-No Supabase project is connected yet (the account available in this session wasn't the right one for NDS). The schema is fully written and ready to apply:
+The NDS Supabase project is connected locally through project ref `vrnfthchuuybsxmitxrp`. The existing remote schema already contains the `reviews` and `inquiries` tables. The compatibility migration `supabase/migrations/20261015124925_align_nds_data_api_permissions.sql` grants the required Data API privileges while keeping RLS enabled.
 
 ```bash
 supabase login
-supabase link --project-ref <your-project-ref>
-supabase db push   # applies supabase/migrations/0001_create_reviews.sql and 0002_create_inquiries.sql
+supabase link --project-ref vrnfthchuuybsxmitxrp
+# For a fresh project only: supabase db push
 ```
 
-Or apply the two files in `supabase/migrations/` directly via the SQL editor / an MCP `apply_migration` call. Then set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` from the project's API settings.
+The current project already has its remote migration history from an earlier setup, so the compatibility SQL was applied directly and recorded as applied. If the migration history is rebuilt later, first sync the remote history with `supabase db pull`. Never commit `.env.local` or a service-role key.
 
 Both tables have RLS enabled from the start:
 

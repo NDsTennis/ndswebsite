@@ -3,6 +3,16 @@
 import { getSupabaseServerClient } from "@/lib/supabase/server";
 import { inquirySchema } from "@/lib/validation/inquiry";
 
+const inquiryTypeMap = {
+  privattraining: "private",
+  gruppentraining: "group",
+  leistungstraining: "performance",
+  matchcoaching: "match",
+  "online-coaching": "online",
+  vereinsanfrage: "club",
+  sonstiges: "other",
+} as const;
+
 export type InquiryFormState =
   | { status: "idle" }
   | { status: "success" }
@@ -42,9 +52,9 @@ export async function submitInquiry(
     name: parsed.data.name,
     email: parsed.data.email,
     phone: parsed.data.phone || null,
-    intent: parsed.data.intent,
+    inquiry_type: inquiryTypeMap[parsed.data.intent as keyof typeof inquiryTypeMap],
     message: parsed.data.message,
-    consent: parsed.data.consent,
+    privacy_consent: parsed.data.consent,
     language: parsed.data.language,
   });
 
