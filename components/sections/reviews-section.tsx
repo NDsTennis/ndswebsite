@@ -1,4 +1,5 @@
 import { ReviewForm } from "@/components/sections/review-form";
+import { ReviewSlider } from "@/components/sections/review-slider";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -68,21 +69,12 @@ export async function ReviewsSection({ dict }: { dict: Dictionary }) {
                   </div>
                 </Reveal>
 
-                <div className="mt-10 grid gap-5 sm:grid-cols-2">
-                  {data.recent.map((review, i) => (
-                    <Reveal key={review.id} delayMs={i * 40}>
-                      <figure className="flex h-full flex-col gap-3 rounded-2xl border border-ink/10 bg-white/40 p-6">
-                        <StarRatingDisplay rating={review.rating} size="sm" />
-                        <blockquote className="text-sm leading-relaxed text-ink/80">
-                          “{review.message}”
-                        </blockquote>
-                        <figcaption className="mt-auto text-xs font-medium uppercase tracking-wide text-ink/50">
-                          {review.display_name}
-                        </figcaption>
-                      </figure>
-                    </Reveal>
-                  ))}
-                </div>
+                <ReviewSlider
+                  reviews={data.recent}
+                  locale={dict.locale}
+                  previousLabel={dict.locale === "de" ? "Vorherige Bewertung" : "Previous review"}
+                  nextLabel={dict.locale === "de" ? "Nächste Bewertung" : "Next review"}
+                />
               </>
             ) : (
               <Reveal delayMs={100}>

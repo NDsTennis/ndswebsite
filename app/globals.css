@@ -53,3 +53,110 @@ html {
   background: var(--color-lime);
   color: var(--color-ink);
 }
+
+@keyframes hero-title-arrive {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-title {
+  animation: hero-title-arrive 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.court-line {
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  animation: court-draw 2.2s cubic-bezier(0.55, 0, 0.35, 1) forwards;
+}
+
+.court-line-2 { animation-delay: 180ms; }
+.court-line-3 { animation-delay: 360ms; }
+.court-line-4 { animation-delay: 540ms; }
+
+@keyframes court-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.review-slide {
+  animation: review-arrive 380ms ease-out both;
+}
+
+@keyframes review-arrive {
+  from { opacity: 0.4; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.review-control {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgb(23 28 25 / 14%);
+  border-radius: 9999px;
+  color: var(--color-ink);
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.review-control:hover {
+  border-color: var(--color-green);
+  background: var(--color-green);
+  color: var(--color-cream);
+}
+
+.review-control:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 3px;
+}
+
+.gallery-photo > div {
+  transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 500ms ease;
+}
+
+.gallery-focus:hover > div { transform: scale(1.01); }
+
+.ball-flight {
+  position: relative;
+  margin: -1rem 0 2rem;
+  overflow: hidden;
+}
+
+.flight-path {
+  fill: none;
+  stroke: rgb(165 106 67 / 35%);
+  stroke-width: 1.5;
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+}
+
+.flight-ball {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--color-lime);
+  box-shadow: inset -2px -2px 0 rgb(23 28 25 / 14%);
+  opacity: 0;
+}
+
+.ball-flight.is-started .flight-path { animation: flight-draw 1800ms ease-out forwards; }
+.ball-flight.is-started .flight-ball { animation: ball-travel 1800ms cubic-bezier(0.3, 0, 0.2, 1) forwards; }
+
+@keyframes flight-draw { to { stroke-dashoffset: 0; } }
+@keyframes ball-travel {
+  0% { left: 0; top: 73%; opacity: 0; transform: scale(0.7); }
+  8% { opacity: 1; }
+  42% { top: 20%; }
+  72% { top: 56%; }
+  100% { left: calc(100% - 1rem); top: 17%; opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .court-line { animation: none; stroke-dashoffset: 0; }
+  .hero-title, .review-slide { animation: none; }
+  .flight-path { stroke-dashoffset: 0; }
+  .flight-ball { left: calc(100% - 1rem); top: 17%; opacity: 1; }
+}

@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
+import { CourtBuild } from "@/components/ui/court-build";
 import { Container } from "@/components/ui/container";
+import { AnimatedStat } from "@/components/ui/animated-stat";
+import { ParallaxFrame } from "@/components/ui/parallax-frame";
 import { Photo } from "@/components/ui/photo-placeholder";
-import { Stat } from "@/components/ui/stat";
 import { heroSlogan, sectionIds } from "@/content/site";
 import type { Dictionary } from "@/content/types";
 
@@ -12,14 +14,15 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
   const slogan = heroSlogan[dict.locale];
 
   return (
-    <section className="relative overflow-hidden bg-green text-cream">
+    <section className="hero-section relative overflow-hidden bg-green text-cream">
+      <CourtBuild />
       <Container className="grid gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:py-28">
-        <div className="flex flex-col gap-7">
+        <div className="relative z-10 flex flex-col gap-7">
           <span className="text-xs font-semibold uppercase tracking-[0.25em] text-lime">
             {dict.hero.eyebrow}
           </span>
 
-          <h1 className="font-display text-[2.75rem] leading-[1.05] sm:text-6xl lg:text-7xl">
+          <h1 className="hero-title font-display text-[2.75rem] leading-[1.05] sm:text-6xl lg:text-7xl">
             {slogan}
           </h1>
 
@@ -45,22 +48,24 @@ export function HeroSection({ dict }: { dict: Dictionary }) {
               <div key={metric.label}>
                 <dt className="sr-only">{metric.label}</dt>
                 <dd>
-                  <Stat value={metric.value} label={metric.label} tone="light" />
+                  <AnimatedStat value={metric.value} label={metric.label} locale={dict.locale} />
                 </dd>
               </div>
             ))}
           </dl>
         </div>
 
-        <Photo
-          src="/images/nds/andy-portrait.jpg"
-          alt={dict.hero.name}
-          label={dict.hero.photoPlaceholderLabel}
-          aspect="portrait"
-          tone="dark"
-          preload
-          className="w-full max-w-sm lg:max-w-md lg:justify-self-end"
-        />
+        <ParallaxFrame className="w-full max-w-sm lg:max-w-md lg:justify-self-end">
+          <Photo
+            src="/images/nds/andy-portrait.jpg"
+            alt={dict.hero.name}
+            label={dict.hero.photoPlaceholderLabel}
+            aspect="portrait"
+            tone="dark"
+            preload
+            className="relative z-10 w-full max-w-sm lg:max-w-md lg:justify-self-end"
+          />
+        </ParallaxFrame>
       </Container>
     </section>
   );

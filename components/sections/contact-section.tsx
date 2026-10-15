@@ -1,4 +1,5 @@
 import { ContactForm } from "@/components/sections/contact-form";
+import { BallFlight } from "@/components/ui/ball-flight";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -11,6 +12,7 @@ export function ContactSection({ dict }: { dict: Dictionary }) {
   return (
     <section id={sectionIds.contact} className="scroll-mt-20 bg-cream py-20 sm:py-28">
       <Container>
+        <BallFlight />
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div className="flex flex-col gap-8">
             <Reveal>
