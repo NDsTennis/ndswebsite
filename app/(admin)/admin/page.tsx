@@ -1,6 +1,6 @@
-import { AdminDashboard } from "@/app/admin/admin-dashboard";
-import { AdminLogin } from "@/app/admin/admin-login";
-import { PasswordChange } from "@/app/admin/password-change";
+import { AdminDashboard } from "./admin-dashboard";
+import { AdminLogin } from "./admin-login";
+import { PasswordChange } from "./password-change";
 import { getAdminContext } from "@/lib/admin";
 import type { InquiryRow, ReviewRow } from "@/lib/supabase/types";
 
